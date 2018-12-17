@@ -1,0 +1,308 @@
+<!DOCTYPE.html>
+<html>
+<head>
+    <style>
+
+    @keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+#heading {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+  padding: 0px;
+  font-size: 60px;
+  text-align: center;
+  color:black;
+}
+
+    .clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+h1
+{
+    margin-top: 50px;
+    text-align: center;
+}
+    body
+    {
+        background-color :lightgreen;
+    }
+    .UI
+    {
+        color:blue;
+        margin-top: 100px;
+        font-size: 120%;
+    }
+    p{
+        font-size: 250%;
+        font-family: forte;
+    }
+    .bettingvalues{
+    float:left;
+    width:19%;
+}
+
+#first{
+    margin-left: 20px;
+}
+
+    #startg{
+        margin-left: 1400px;
+    }
+     .btn1{
+    margin-bottom: -80px;
+    margin-left:20px;
+    margin-top: 80px;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+    .btn2{
+        float: right;
+    margin-bottom: 20px;
+    margin-right: 20px;
+  padding: 15px 40px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.btn2:hover {background-color: #3e8e41}
+.btn1:hover {background-color: #3e8e41}
+
+   
+   </style>
+</head>
+<body>
+
+    <h1 id="heading"> Select the piles and the Money to be Invested as per the user</h1>
+
+    <form action="/action_page.php" method="get" class="UI">
+        <div class="bettingvalues" id="f1" class="clearfix" style="display: none;" >
+            <p> Player 1 </p>
+
+         <input type="checkbox" class="player1" id="11" onclick="fun('11')"> Pile 1<br>
+         <input type="text" name="name" id="text11" style="display:none" /><br>
+
+         <input type="checkbox" class="player1" id="12" onclick="fun('12')"> Pile 2<br>
+         <input type="text" name="name" id="text12" style="display:none"  /><br>
+
+         <input type="checkbox" class="player1" id="13" onclick="fun('13')"> Pile 3<br>
+         <input type="text" name="name" id="text13"style="display:none"  /><br>
+
+         <input type="checkbox" class="player1" id="14" onclick="fun('14')"> Pile 4<br>
+         <input type="text" name="name" id="text14" style="display:none" /><br>
+
+         <input type="checkbox" class="player1" id="15" onclick="fun('15')"> Pile 5<br>
+         <input type="text" name="name" id="text15" style="display:none"  /><br>
+     </div>
+
+        <div class="bettingvalues" class="clearfix" id="f2" style="display: none">
+
+            <p> Player 2 </p>
+
+         <input type="checkbox" class="player2" id="21" onclick="fun('21')"> Pile 1<br>
+         <input type="text" name="name" id="text21" style="display:none" /><br>
+       
+         <input type="checkbox" class="player2" id="22" onclick="fun('22')"> Pile 2<br>
+         <input type="text" name="name" id="text22" style="display:none"  /><br>
+       
+         <input type="checkbox" class="player2" id="23" onclick="fun('23')"> Pile 3<br>
+         <input type="text" name="name" id="text23" style="display:none" /><br>
+       
+         <input type="checkbox" class="player2" id="24" onclick="fun('24')"> Pile 4<br>
+         <input type="text" name="name" id="text24" style="display:none" /><br>
+
+         <input type="checkbox" class="player2" id="25" onclick="fun('25')"> Pile 5<br>
+         <input type="text" name="name" id="text25" style="display:none" /><br>
+        </div>
+
+        <div class="bettingvalues" class="clearfix" id="f3" style="display: none">
+
+            <p> Player 3 </p>
+
+         <input type="checkbox" class="player3" id="31" onclick="fun('31')"> Pile 1<br>
+         <input type="text" name="name" id="text31" style="display:none"  /><br>
+        
+         <input type="checkbox" class="player3" id="32" onclick="fun('32')"> Pile 2<br>
+         <input type="text" name="name" id="text32" style="display:none"  /><br>
+        
+         <input type="checkbox" class="player3" id="33" onclick="fun('33')"> Pile 3<br>
+        <input type="text" name="name" id="text33" style="display:none"  /><br>
+
+         <input type="checkbox" class="player3" id="34" onclick="fun('34')"> Pile 4<br>
+         <input type="text" name="name" id="text34" style="display:none" /><br>
+        
+         <input type="checkbox" class="player3" id="35" onclick="fun('35')"> Pile 5<br>
+         <input type="text" name="name" id="text35" style="display:none"  /><br>
+    </div>
+
+        <div class="bettingvalues" class="clearfix" id="f4" style="display: none">
+
+            <p> Player 4 </p>
+
+         <input type="checkbox" class="player4" id="41" onclick="fun('41')"> Pile 1<br>
+        <input type="text" name="name" id="text41" style="display:none" /><br>
+
+         <input type="checkbox" class="player4" id="42" onclick="fun('42')"> Pile 2<br>
+        <input type="text" name="name" id="text42" style="display:none" /><br>
+
+
+         <input type="checkbox" class="player4" id="43" onclick="fun('43')"> Pile 3<br>
+         <input type="text" name="name" id="text43" style="display:none"  /><br>
+
+         <input type="checkbox" class="player4" id="44" onclick="fun('44')"> Pile 4<br>
+         <input type="text" name="name" id="text44" style="display:none" /><br>
+        
+         <input type="checkbox" class="player4" id="45" onclick="fun('45')"> Pile 5<br>
+        <input type="text" name="name" id="text45" style="display:none" /><br>
+    </div>
+
+        <div class="bettingvalues" class="clearfix" id="f5" style="display: none">
+
+            <p> Player 5 </p>
+
+         <input type="checkbox" class="player5" id="51" onclick="fun('51')"> Pile 1<br>
+         <input type="text" name="name" id="text51" style="display:none"  /><br>
+
+         <input type="checkbox" class="player5" id="52" onclick="fun('52')"> Pile 2<br>
+         <input type="text" name="name" id="text52" style="display:none" /><br>
+        
+         <input type="checkbox" class="player5" id="53" onclick="fun('53')"> Pile 3<br>
+         <input type="text" name="name" id="text53" style="display:none" /><br>
+        
+         <input type="checkbox" class="player5" id="54" onclick="fun('54')"> Pile 4<br>
+        <input type="text" name="name" id="text54" style="display:none" onkeydown="store()" /><br>
+
+         <input type="checkbox" class="player5" id="55" onclick="fun('55')"> Pile 5<br>
+         <input type="text" name="name" id="text55" style="display:none" /><br>
+     </div>
+
+           <!-- <button class="btn1">Submit Values</button>
+           <button class="btn2">Start Game</button> -->
+    </form>
+    <button style="float: right" class="btn1" id="clickMe" style="margin-bottom:0px;">Submit Values</button>
+          <a href="casinogame.html" target="_self"> CLICK HERE TO THE ROUND</a>
+    
+  </body>
+  <script type="text/javascript"> 
+   let dp=localStorage.getItem('data_players');
+   console.log(dp);
+   let data_players=dp.split(",");
+   console.log(data_players);
+   function X (data_players)
+   {
+      let i=localStorage.getItem('no_of_players');
+      console.log(i);
+      for(let j=1;j<=i;j++)
+        document.getElementById("f"+j).style.display='';
+
+
+   }
+   X(data_players);
+    var player1=["","","","",""],player2=["","","","",""],player3=["","","","",""],player4=["","","","",""],player5=["","","","",""]
+        
+    document.getElementById("clickMe").onclick = function () {
+        console.log('hi there');
+
+    for(let j=1;j<=5;j++)
+    {
+        
+        player1[j]=document.getElementById('text1'+j).value;
+    } 
+
+     for(let j=1;j<=5;j++)
+    {
+        player2[j]=document.getElementById('text2'+j).value;
+    } 
+
+ for(let j=1;j<=5;j++)
+    {
+        
+      player3[j]=document.getElementById('text3'+j).value;
+    } 
+
+    for(let j=1;j<=5;j++)
+    {
+        
+      player4[j]=document.getElementById('text3'+j).value;
+    } 
+
+    for(let j=1;j<=5;j++)
+    {
+        
+      player5[j]=document.getElementById('text3'+j).value;
+    } 
+    for(let i=0;i<data_players.length;i++)
+    {
+      if(i==0)
+        localStorage.setItem(data_players[i]+"A",player1);
+      else if(i==1)        
+        localStorage.setItem(data_players[i]+"A",player2);
+      else if(i==2)
+        localStorage.setItem(data_players[i]+"A",player3);
+      else if(i==3)
+        localStorage.setItem(data_players[i]+"A",player4);
+      else if(i==4)
+        localStorage.setItem(data_players[i]+"A",player5);
+       console.log(localStorage.getItem("aA"));
+    }
+  };
+       
+
+        function fun(arg)
+        {
+            var ans=document.getElementById(arg);
+            var player=arg/10;
+            var pile=arg%10;
+            
+            if(ans.checked==true)
+            {
+                document.getElementById('text'+arg).style.display='';
+
+                var text;
+                document.getElementById('text'+arg).value;
+                
+                
+            }
+            else 
+            {
+                    document.getElementById('text'+arg).value="";
+                /*if(player===1)
+                    player1[pile]=0;
+                else if(player===2)
+                    player2[pile]=0;
+                else if(player===3)
+                    player3[pile]=0;
+                else if(player===4)
+                    player4[pile]=0;
+                else if(player===5)
+                    player5[pile]=0; */
+
+                document.getElementById('text'+arg).style.display='none';
+        
+            }
+           
+        }
+</script>
+</html>

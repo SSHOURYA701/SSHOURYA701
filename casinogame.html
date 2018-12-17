@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link type="text/css" rel="stylesheet" href="casino.css">
+	<style>
+/* Gold */
+.row:nth-child(1) {background: gold;}
+/* Silver */
+.row:nth-child(2) {background: #c0c0c0;}
+/* Bronze */
+.row:nth-child(3) {background: #cd7f32;}
+#container {
+  width: 600px;
+  height: auto;
+}
+
+.row {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 40px;
+  border-bottom: 1px solid #AFAFAF;
+}
+
+.name {
+  position: relative;
+  display: inline-block;
+  width: 75%;
+  line-height: 45px;
+}
+
+.score {
+  position: relative;
+  display: inline-block;
+  width: 25%;
+}
+
+.row:nth-child(1) {
+  background: gold;
+}
+
+.row:nth-child(2) {
+  background: #c0c0c0;
+}
+
+.row:nth-child(3) {
+  background: #cd7f32;
+}
+.row:nth-child(3) {
+  background:lightcoral;
+}
+.row:nth-child(3) {
+  background:lightseagreen;
+}
+</style>
+	</head>
+
+
+<body>
+	
+<!-- 
+  <div id="container">
+  <div class="row">
+    <div class="name" id="lb1">Player1</div><div class="score" id="sc1">0</div>
+  </div>
+
+  <div class="row">
+    <div class="name" id="lb2">Player2</div><div class="score" id="sc2">0</div>
+  </div>
+
+  <div class="row">
+    <div class="name" id="lb3">Player3</div><div class="score" id="sc3">0</div>
+  </div>
+
+  <div class="row">
+    <div class="name" id="ld4">Player4</div><div class="score" id="sc4">0</div>
+  </div>
+
+  <div class="row">
+    <div class="name" id="ld5">Player5</div><div class="score" id="sc5">0</div>
+  </div>
+  </div> -->
+
+
+	<div class="main" id="div1">
+	<h1 id="heading"> Welcome to the Casino Pride Game </h1>
+
+	<img src="cards.png" alt="card" class="card1" id="c1">
+	<img src="cards.png" alt="card" class="card2" id="c2">
+	<img src="cards.png" alt="card" class="card3" id="c3">
+	<img src="cards.png" alt="card" class="card4" id="c4">
+	<img src="cards.png" alt="card" class="card5" id="c5">
+	<img src="cards.png" alt="card" class="card6" id="c6">
+	 <button class="btn">Display Score</button>
+	 <button class="btn" onclick="nextRound()" >Next Round </button>
+	 <button class="btn" style="float:left"> <a href="aman.html" onclick="ag()" target="_self"> Cick here to change bet values </a></button>
+
+</div>
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+let imagearray=[];
+let dp=localStorage.getItem('data_players');
+let data_players=dp.split(",");
+let bet=[],pbet=[],obet=[];
+console.log("hehe",localStorage.getItem('a'));
+for(let i=0;i<data_players.length;i++)
+{
+    bet.push(localStorage.getItem(data_players[i]+"A"));
+    //console.log(bet);
+    pbet.push(bet[i].split(","));
+    //console.log(pbet);
+
+}
+obet=pbet;
+let round=0;
+let cardvaluearray=[];
+//let oldcredits=[1000,1000,1000,1000,1000];
+//let newcredits=[1000,1000,1000,1000,1000];
+var resId=0;
+let flagdisplay=0;
+let currentplayers=localStorage.getItem("no_of_players");
+axios.get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+  .then(function (response) {
+                               resId=response.data.deck_id;
+                               flagdisplay=0
+                               //console.log(resId);
+                               cardvaluearray=[];
+                              axios.get("https://deckofcardsapi.com/api/deck/"+resId+"/draw/?count=6")
+                               .then( function (response) {
+  	                                                       console.log(response);
+  	                                                       for(let i=0;i<6;i++)
+  	                                                       {imagearray.push(response.data.cards[i].image);
+  	                                                       	let c;
+  	                                                       	if(response.data.cards[i].value=="QUEEN")
+  	                                                       		c=12;
+  	                                                       	else if(response.data.cards[i].value=="KING")
+  	                                                       		c=13;
+  	                                                       	else if(response.data.cards[i].value=="JACK")
+  	                                                       		c=11;
+  	                                                       	else if(response.data.cards[i].value=="ACE")
+  	                                                       		c=1;
+  	                                                       	else c=response.data.cards[i].value;
+
+  	                                                       	cardvaluearray.push(c);
+
+  	                                                       }
+                                                           
+                                                          for(let i=0;i<5;i++)
+                                                          {
+                                                          	if(cardvaluearray[i]>cardvaluearray[5])
+                                                          	{
+                                                          		for(let j=0;j<data_players.length;j++)
+                                                          		{
+                                                                      pbet[j][i]=(pbet[j][i]/1)+(pbet[j][i]/1);
+                                                                      //console.log("madhav",pbet[j][i]);
+                                                          		}
+                                                          	}
+                                                          	else {
+                                                          		for(let j=0;j<data_players.length;j++)
+                                                          		{
+                                                                      pbet[j][i]=(pbet[j][i]/1)-(pbet[j][i]/1)      
+                                                                      //console.log("radhav",pbet[j][i]);
+                                                          		}
+                                                          	}
+
+                                                          }
+  	                                                       return (response.data.deck_id);
+                                                          })
+                               .then(function (resId) {
+                               	   axios.get("https://deckofcardsapi.com/api/deck/"+resId+"/shuffle/")
+                               	   .then(function (response){
+                               	   	                         console.log(response.data.deck_id);
+                               	                            })
+                              })
+                           })
+                             .catch(function (error) {
+                                                      console.log(error);
+                                                      });
+
+document.querySelector('.btn').addEventListener('click', function(){
+	//console.log(imagearray);
+
+	if(resId==0 && flagdisplay==0)
+   	alert("Slow Network Try Again");
+    else if(flagdisplay==0)
+	{
+	for(let i=1;i<=6;i++)
+	{
+		//var cardvalue=values[i];
+
+				console.log(data_players[0]);
+				if((localStorage.getItem(data_players[i-1])/1)>0 || i==6)
+				{var cardview=document.querySelector('.card'+i);
+				console.log(cardview);
+				cardview.style.display='block';
+				cardview.src=imagearray[i-1];
+				cardview.alt=cardvaluearray[i-1];
+		        }	
+
+
+	}
+ imagearray=[];
+ flagdisplay=1;
+  }
+   else
+   {
+  
+     	alert("The Cards Are already displayed");
+   }
+	});
+
+function nextRound()
+{
+    console.log('nextRound', flagdisplay);
+    round++;
+    for(let i=0;i<data_players.length;i++)
+    {
+    	for(let j=0;j<5;j++)
+    	{
+    		if(pbet[i][j]=="")
+    		{
+    			//ff;
+    		}
+    		else
+    		{
+    			console.log(data_players[i],pbet[i][j]);
+    			let amount=localStorage.getItem(data_players[i]);
+    			amount=(amount/1)+(pbet[i][j]/1);
+    			pbet=obet;
+    			localStorage.setItem(data_players[i],amount);
+    			if(amount<=0)
+    			{
+    				currentplayers--;
+    			}
+    		}
+    	}
+    }
+    if(currentplayers==0)
+    	alert('game over');
+    if(round==5)
+    {
+    	let p= prompt("enter playerId who wish to continue as 1,2,3..")
+    	p=p.split(",");
+    	let dep=[];
+    	for(let i=0;i<p.length;i++)
+    	{
+    		dep.push(data_players[p[i]-1]);
+    		console.log("oyaaa",dep);
+    	}
+    	localStorage.setItem("data_players",dep);
+    	round=0;
+    }
+    for(let i=1;i<=6;i++)
+	{
+		//var cardvalue=values[i];
+
+				var cardview=document.querySelector('.card'+i);
+				console.log(cardview);
+				cardview.style.display='block';
+				cardview.src="cards.png";
+			    //oldcredits=newcredits;
+
+
+	}
+    if(flagdisplay==0)
+    	alert("Next Round Will Start after Displaying Card");
+    else{
+                                flagdisplay=0
+                               //console.log(resId);
+                               cardvaluearray=[];
+                               axios.get("https://deckofcardsapi.com/api/deck/"+resId+"/draw/?count=6")
+                               .then( function (response) {
+  	                                                       console.log(response);
+  	                                                       for(let i=0;i<6;i++)
+  	                                                       {imagearray.push(response.data.cards[i].image);
+  	                                                       	let c;
+  	                                                       	if(response.data.cards[i].value=="QUEEN")
+  	                                                       		c=12;
+  	                                                       	else if(response.data.cards[i].value=="KING")
+  	                                                       		c=13;
+  	                                                       	else if(response.data.cards[i].value=="JACK")
+  	                                                       		c=11;
+  	                                                       	else if(response.data.cards[i].value=="ACE")
+  	                                                       		c=1;
+  	                                                       	else c=response.data.cards[i].value;
+
+  	                                                       	cardvaluearray.push(c);
+
+  	                                                       }
+                                                           
+                                                          for(let i=0;i<5;i++)
+                                                          {
+                                                          	if(cardvaluearray[i]>cardvaluearray[5])
+                                                          	{
+                                                          		for(let j=0;j<data_players.length;j++)
+                                                          		{
+                                                                      pbet[j][i]=(pbet[j][i]/1)+(pbet[j][i]/1);
+                                                                      console.log(pbet[j][i]);
+                                                          		}
+                                                          	}
+                                                          	else {
+                                                          		for(let j=0;j<data_players.length;j++)
+                                                          		{
+                                                                      pbet[j][i]=(pbet[j][i]/1)-(pbet[j][i]/1);
+                                                                      console.log(pbet[j][i]);
+                                                          		}
+                                                          	}
+
+                                                          }
+  	                                                       return (response.data.deck_id);
+                                                          })
+                               .then(function (resId) {
+                               	   axios.get("https://deckofcardsapi.com/api/deck/"+resId+"/shuffle/")
+                               	   .then(function (response){
+                               	   	                         console.log(response.data.deck_id);
+                               	                            })
+                              })
+                             .catch(function (error) {
+                                                      console.log(error);
+                                                      }); 
+        }
+
+        var poi=[]
+        console.log('here');
+        for(let i=0;i<data_players.length;i++)
+        {
+        	let sdk=localStorage.getItem(data_players[i])
+        	poi.push([data_players[i],sdk])
+        	console.log(data_players)
+        	console.log(sdk)
+        }
+        poi.sort(function(a,b){return a[1]-b[1]})
+        console.log(poi);
+		console.log("aksssssssssh")
+		var hjkl=poi[(data_players.length)-1][0]
+		var zxcv=poi[(data_players.length)-1][1]
+		
+		alert(`the winner of this round is ${hjkl} with credits ${zxcv}`)
+
+
+
+
+}
+
+</script>
+</html>
+
+

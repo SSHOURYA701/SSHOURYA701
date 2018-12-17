@@ -1,0 +1,167 @@
+<!DOCTYPE.html>
+<html>
+<head>
+	<style>
+	body
+	{
+		background-color :lightgreen;
+	}
+	.UI
+	{
+		color:blue;
+		margin-top: 300px;
+		font-size: 120%;
+	}
+	p{
+		font-size: 120%;
+		font-family: forte;
+	}
+   </style>
+</head>
+<body>
+	<form action="/action_page.php" method="get" class="UI">
+		<div  style="display: inline-block;width:300px">
+			<p> Player 1 </p>
+		<div id="p11">
+         <input type="checkbox" class="player1" id="p111" onclick="fun('p11')"> Pile 1<br>
+        </div>
+        <div id="p12" onclick="fun('p12')">
+         <input type="checkbox" class="player1" id="p122"> Pile 2<br>
+        </div>
+        <div id="p13" onclick="fun('p13')">
+         <input type="checkbox" class="player1" id="p133"> Pile 3<br>
+        </div>  
+        <div id="p14" onclick="fun('p14')">
+         <input type="checkbox" class="player1" id="p144"> Pile 4<br>
+        </div>
+        <div id="p15" onclick="fun('p15')">
+         <input type="checkbox" class="player1" id="p155"> Pile 5<br>
+        </div>
+        </div>
+        <div style="display: inline-block;width:300px">
+        	<p> Player 2 </p>
+        <div id="p21" onclick="fun('p21')">
+         <input type="checkbox" class="player2" id="p211"> Pile 1<br>
+        </div>
+        <div id="p22" onclick="fun('p22')">
+         <input type="checkbox" class="player2" id="p222"> Pile 2<br>
+        </div>
+        <div id="p23" onclick="fun('p23')">
+         <input type="checkbox" class="player2" id="p233"> Pile 3<br>
+        </div>
+        <div id="p24" onclick="fun('p24')">
+         <input type="checkbox" class="player2" id="p244"> Pile 4<br>
+        </div>
+        <div id="p25" onclick="fun('p25')">
+         <input type="checkbox" class="player2" id="p255"> Pile 5<br>
+        </div>
+        </div>
+
+        <div style="display: inline-block;width:300px">
+        	<p> Player 3 </p>
+        <div id="p31" onclick="fun('p31')">
+         <input type="checkbox" class="player3" id="p311"> Pile 1<br>
+        </div>
+        <div id="p32" onclick="fun('p32')">
+         <input type="checkbox" class="player3" id="p322"> Pile 2<br>
+        </div>
+        <div id="p33" onclick="fun('p33')">
+         <input type="checkbox" class="player3" id="p333"> Pile 3<br>
+        </div>
+        <div id="p34" onclick="fun('p34')">
+         <input type="checkbox" class="player3" id="p344"> Pile 4<br>
+        </div>
+        <div id="p35" onclick="fun('p35')">
+         <input type="checkbox" class="player3" id="p355"> Pile 5<br>
+        </div>
+         </div>
+        <div style="display: inline-block;width:300px">
+        	<p> Player 4 </p>
+        <div id="p41" onclick="fun('p41')">
+         <input type="checkbox" class="player4" id="p411"> Pile 1<br>
+        </div>
+        <div id="p42" onclick="fun('p42')">
+         <input type="checkbox" class="player4" id="p422"> Pile 2<br>
+        </div>
+        <div id="p43" onclick="fun('p43')">
+         <input type="checkbox" class="player4" id="p433"> Pile 3<br>
+        </div>
+        <div id="p44" onclick="fun('p44')">
+         <input type="checkbox" class="player4" id="p444"> Pile 4<br>
+        </div>
+        <div id="p45" onclick="fun('p45')">
+         <input type="checkbox" class="player4" id="p455"> Pile 5<br>
+        </div>
+        </div>
+        <div style="display: inline-block;width:300px">
+        	<p> Player 5 </p>
+        <div id="p51" onclick="fun('p51')">
+         <input type="checkbox" class="player5" id="p511"> Pile 1<br>
+        </div>
+        <div id="p52" onclick="fun('p52')">
+         <input type="checkbox" class="player5" id="p522"> Pile 2<br>
+        </div>
+        <div id="p53" onclick="fun('p53')">
+         <input type="checkbox" class="player5" id="p533"> Pile 3<br>
+        </div>
+        <div id="p54" onclick="fun('p54')">
+         <input type="checkbox" class="player5" id="p544"> Pile 4<br>
+        </div>
+        <div id="p55" onclick="fun('p55')">
+         <input type="checkbox" class="player5" id="p555"> Pile 5<br>
+        </div>
+        </div>
+    </form>
+	
+	<center>  <button id="done" style="font-size: 300% margin-top: 100px"> Done </button> </center>
+
+ <script type="text/javascript"> 
+    	function fun(arg)
+    	{
+    		let y= document.getElementById(arg+arg[arg.length-1]);
+    		console.log(arg+arg[arg.length-1]);
+    		if(y.checked==true)
+    		{
+    			y.setAttribute('checked',true);
+    		let s =`<input type="text" id="input`+arg+` class="form-control" aria-label="Username" aria-describedby="basic-addon1" style="text-align: right"/>`;
+    		document.getElementById(arg).innerHTML+= s;
+    	    }
+            else 
+            {
+               y.setAttribute('checked',false);
+    		  let s=`<input type="checkbox" class="player1" id="p111"> Pile `+arg[arg.length-1] + `<br>`;
+    		document.getElementById(arg).innerHTML=s;
+	
+            }
+    		
+    	}
+    </script>
+
+</body>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script type="text/javascript">
+
+/*axios.get("https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+  .then(function (response) {
+                               let resId=response.data.deck_id;
+                               console.log(resId);
+                               axios.get("https://deckofcardsapi.com/api/deck/"+resId+"/draw/?count=2")
+                               .then( function (response) {
+  	                                                       console.log(response);
+  	                                                       return (response.data.deck_id);
+                                                          })
+                               .then(function (resId) {
+                               	   axios.get("https://deckofcardsapi.com/api/deck/"+resId+"/shuffle/")
+                               	   .then(function (response){
+                               	   	                         console.log(response.data.deck_id);
+                               	                            })
+                              })
+                           })
+                             .catch(function (error) {
+                                                      console.log(error);
+                                                      });
+*/
+</script>
+
+</script>
+</html>

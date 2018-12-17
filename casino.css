@@ -1,0 +1,66 @@
+
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.card6
+{
+	padding-left: 40%;
+	height: 300px;
+	width:300px;
+}
+#heading {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  animation: 1s ease-out 0s 1 slideInFromTop;
+  padding: 0px;
+  font-size: 40px;
+  text-align: center;
+  color: #ffa600;
+}
+
+
+body{
+	background-image: url(back.png) ;
+	background-repeat:no-repeat;
+  	background-size: 100%;
+  	background-color: black;
+}
+
+.card1,.card2,.card3,.card4,.card5,.card5
+{
+	margin-right: 10px;
+	height: 225px;
+	width: 225px;
+	float:left;
+	margin-top: 250px;
+		margin-left:0px;
+		padding: 20px;
+}
+
+.btn {
+	margin-bottom: 40px;
+	margin-left:85%;
+  padding: 15px 25px;
+  font-size: 24px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+}
+
+.btn:hover {background-color: #3e8e41}
+
+.btn:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px)
