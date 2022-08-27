@@ -1,6 +1,6 @@
 - 👋 Hi, I’m Shreyansh Shourya
 - 👀 I’m interested in Problem Solving, Coding and  Data Science.
-- 🌱 I’m currently working as a Data Scientist at HDFC Bank.
+- 🌱 I’m currently working as a Developer at HDFC Bank.
 - 💞️ I’m looking to collaborate on peer programming or any machine learning projects
 - 📫 You can reach me at [shreyansh-shourya-587822160](https://www.linkedin.com/in/shreyansh-shourya-587822160/)
 
